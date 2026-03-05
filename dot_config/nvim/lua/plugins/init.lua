@@ -13,7 +13,26 @@ return {
   {
     'williamboman/mason-lspconfig.nvim',
     dependencies = {
-      { 'williamboman/mason.nvim', opts = {} },
+      {
+        'williamboman/mason.nvim',
+        opts = {
+          registries = {
+            'github:mason-org/mason-registry',
+            'github:Crashdummyy/mason-registry',
+          },
+        },
+        config = function(_, opts)
+          require('mason').setup(opts)
+
+          local registry = require('mason-registry')
+          registry.refresh(function()
+            local pkg = registry.get_package('roslyn')
+            if not pkg:is_installed() then
+              pkg:install()
+            end
+          end)
+        end,
+      },
     },
     opts = {
       ensure_installed = {
@@ -46,5 +65,12 @@ return {
         lua = { 'stylua' },
       },
     },
+  },
+
+  -- Roslyn
+  {
+    'seblj/roslyn.nvim',
+    ft = { 'cs' },
+    opts = {},
   },
 }
