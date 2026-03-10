@@ -63,13 +63,6 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        cs = { 'csharpier' },
-        formatters = {
-          csharpier = {
-            command = 'csharpier',
-            args = { '--stdin-filepath', '$FILENAME' },
-          },
-        },
       },
     },
   },

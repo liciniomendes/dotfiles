@@ -34,6 +34,54 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if client:supports_method('textDocument/completion') then
       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
     end
+
+    local map = function(mode, lhs, rhs, opts)
+      opts = opts or {}
+      vim.keymap.set(mode, lhs, rhs, opts)
+    end
+
+    -- Actions
+    map(
+      'n',
+      '<leader>ca',
+      vim.lsp.buf.code_action,
+      { desc = 'LSP Code Action' }
+    )
+    map(
+      'v',
+      '<leader>ca',
+      vim.lsp.buf.code_action,
+      { desc = 'LSP Code Action (Visual)' }
+    )
+    map('n', '<leader>cr', vim.lsp.buf.rename, { desc = 'LSP Rename' })
+    map('n', '<leader>cf', function()
+      vim.lsp.buf.format({ async = true })
+    end, { desc = 'LSP Format' })
+
+    -- Navigation
+    map('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP Go to definition' })
+    map('n', 'gD', vim.lsp.buf.declaration, { desc = 'LSP Go to declaration' })
+    map(
+      'n',
+      'gt',
+      vim.lsp.buf.type_definition,
+      { desc = 'LSP Go to type definition' }
+    )
+    map(
+      'n',
+      'gi',
+      vim.lsp.buf.implementation,
+      { desc = 'LSP Go to implementation' }
+    )
+    map('n', 'gr', vim.lsp.buf.references, { desc = 'LSP show references' })
+
+    -- Hover
+    map(
+      'n',
+      '<C-k>',
+      vim.lsp.buf.signature_help,
+      { desc = 'LSP Signature help' }
+    )
   end,
 })
 
