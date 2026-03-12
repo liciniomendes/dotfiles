@@ -1,0 +1,14 @@
+## Exports
+## adds all kubeconfig files in the folder to the PATH env
+export KUBECONFIG=$(find /mnt/c/repos/k8s/kubeconfig/*.yaml -maxdepth 1 -type f | paste -sd ':')
+## enable vagrant from the WSL
+export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
+export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
+## packer variables
+export PKR_VAR_headless=false
+
+## Alias
+alias m='minikube'
+alias v='vagrant'
+alias vd='vagrant destroy -f'
+alias vssh='ssh -F vagrant.ssh default'

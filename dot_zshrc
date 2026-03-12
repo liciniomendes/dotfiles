@@ -16,15 +16,9 @@ eval "$(brew shellenv)"
 # Exports
 export GPG_TTY=$(tty)
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-#export KUBECONFIG=$(find /mnt/c/repos/k8s/kubeconfig/*.yaml -maxdepth 1 -type f | paste -sd ':')
 export DOTNET_ROOT="$HOME/.dotnet"
 export PATH="$DOTNET_ROOT/tools:$DOTNET_ROOT:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
-## enable vagrant from the WSL
-# export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
-# export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
-## packer variables
-# export PKR_VAR_headless=false
 
 ### Zinit start configs
 # Set the zinit home directory
@@ -92,10 +86,6 @@ bindkey '^n' history-search-forward
 alias ls='ls --color'
 alias ll='ls -lh'
 alias clip='xclip -sel c'
-# alias m='minikube'
-# alias v='vagrant'
-# alias vd='vagrant destroy -f'
-# alias vssh='ssh -F vagrant.ssh default'
 
 ## Shell integrations
 # Set up fzf key bindings and fuzzy completion
