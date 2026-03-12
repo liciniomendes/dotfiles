@@ -12,3 +12,6 @@ alias m='minikube'
 alias v='vagrant'
 alias vd='vagrant destroy -f'
 alias vssh='ssh -F vagrant.ssh default'
+
+## Shell integrations
+eval "$(fnm env --use-on-cd --shell zsh)"
