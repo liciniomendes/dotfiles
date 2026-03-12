@@ -5,23 +5,26 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-if [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]] then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [[ "$(uname)" == "Darwin" ]]; then
+  export PATH="/opt/homebrew/bin:$PATH"
+elif [[ "$(uname)" == "Linux" ]]; then
+  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 fi
 
+eval "$(brew shellenv)"
+
 # Exports
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export GPG_TTY=$(tty)
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export KUBECONFIG=$(find /mnt/c/repos/k8s/kubeconfig/*.yaml -maxdepth 1 -type f | paste -sd ':')
+#export KUBECONFIG=$(find /mnt/c/repos/k8s/kubeconfig/*.yaml -maxdepth 1 -type f | paste -sd ':')
 export DOTNET_ROOT="$HOME/.dotnet"
-export PATH="/home/liapm/.dotnet/tools:$DOTNET_ROOT:$PATH"
+export PATH="$DOTNET_ROOT/tools:$DOTNET_ROOT:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
 ## enable vagrant from the WSL
-export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
+# export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
 # export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
 ## packer variables
-export PKR_VAR_headless=false
+# export PKR_VAR_headless=false
 
 ### Zinit start configs
 # Set the zinit home directory
@@ -89,16 +92,22 @@ bindkey '^n' history-search-forward
 alias ls='ls --color'
 alias ll='ls -lh'
 alias clip='xclip -sel c'
-alias m='minikube'
-alias v='vagrant'
-alias vd='vagrant destroy -f'
-alias vssh='ssh -F vagrant.ssh default'
+# alias m='minikube'
+# alias v='vagrant'
+# alias vd='vagrant destroy -f'
+# alias vssh='ssh -F vagrant.ssh default'
 
-# Shell integrations
-eval "$(fzf --zsh)"
+## Shell integrations
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 eval "$(ssh-agent)" > /dev/null
-eval "$(fnm env --use-on-cd --shell zsh)"
+# eval "$(fnm env --use-on-cd --shell zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+## Work configurations
+if [[ -f "$HOME/.zshrc.work" ]]; then
+  source "$HOME/.zshrc.work"
+fi
 
 # Functions
 addSsh() {

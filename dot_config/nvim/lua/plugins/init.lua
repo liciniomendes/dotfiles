@@ -48,7 +48,13 @@ return {
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
-    opts = {},
+    ft = { 'markdown', 'blink-cmp-documentation' },
+    opts = {
+      file_types = { 'markdown', 'blink-cmp-documentation' },
+      completions = {
+        blink = { enabled = true },
+      },
+    },
   },
 
   -- Conform
