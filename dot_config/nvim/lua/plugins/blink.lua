@@ -34,7 +34,15 @@ return {
       proximity = { enabled = true },
     },
     sources = {
-      default = { 'lsp', 'path', 'buffer', 'snippets' },
+      default = { 'lazydev', 'lsp', 'path', 'buffer', 'snippets' },
+      providers = {
+        lazydev = {
+          name = 'LazyDev',
+          module = 'lazydev.integrations.blink',
+          -- make lazydev completions top priority (see `:h blink.cmp`)
+          score_offset = 100,
+        },
+      },
     },
   },
 }
