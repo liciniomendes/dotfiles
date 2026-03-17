@@ -3,6 +3,11 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
+    indent = {
+      enabled = true,
+      char = '▏', -- '│' or "▏" for lighter option
+      hl = 'SnacksIndent',
+    },
     explorer = {
       replace_netrw = true,
       enabled = true,

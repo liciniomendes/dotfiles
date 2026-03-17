@@ -24,6 +24,14 @@ vim.o.relativenumber = true
 vim.o.signcolumn = 'yes'
 vim.o.termguicolors = true
 
+-- fold configurations
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+-- use LSP if available, treesitter has fallback
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'v:lua.vim.lsp.foldexpr()'
+
 -- lsp configs
 vim.lsp.enable({ 'lua_ls', 'roslyn' })
 
