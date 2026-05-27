@@ -38,6 +38,7 @@ vim.keymap.set("n", "<leader>fe", function() Snacks.picker.explorer() end, { des
 -- Git
 vim.keymap.set("n", "<leader>gb", function() Snacks.git.blame_line() end, { desc = "Git blame line" })
 vim.keymap.set("n", "<leader>gB", function() Snacks.gitbrowse() end, { desc = "Git browse" })
+vim.keymap.set("n", "<leader>gd", function() Snacks.picker.git_diff() end, { desc = "Git diff"})
 
 -- Terminal
 vim.keymap.set("n", "<leader>t", function() Snacks.terminal() end, { desc = "Terminal" })
