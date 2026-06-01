@@ -32,6 +32,9 @@ vim.pack.add({
 
   -- markdown
   { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
+
+  -- REST
+  { src = "https://github.com/mistweaverco/kulala.nvim" },
 })
 
 -- loads all plugins exist in plugins folder
