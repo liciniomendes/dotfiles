@@ -19,6 +19,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export DOTNET_ROOT="$HOME/.dotnet"
 export PATH="$DOTNET_ROOT/tools:$DOTNET_ROOT:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
+export EDITOR=nvim
 
 ### Zinit start configs
 # Set the zinit home directory
@@ -78,7 +79,12 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
+# enable commands
+autoload -U edit-command-line
+zle -N edit-command-line
+
 # Keybindings
+bindkey '^X^E' edit-command-line
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
