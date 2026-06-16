@@ -99,6 +99,9 @@ source <(fzf --zsh)
 eval "$(ssh-agent)" > /dev/null
 eval "$(zoxide init --cmd cd zsh)"
 
+## tmux configurations
+source "$HOME/.zshrc.tmux"
+
 ## Work configurations
 if [[ -f "$HOME/.zshrc.work" ]]; then
   source "$HOME/.zshrc.work"
