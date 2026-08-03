@@ -1,6 +1,6 @@
 require("kulala").setup({
   default_env = "dev",
-  debug = false,
+  debug = 3,
   display_mode = "split", -- side-by-side
   split_direction = "vertical",
 })

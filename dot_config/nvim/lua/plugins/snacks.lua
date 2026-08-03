@@ -6,6 +6,9 @@ require("snacks").setup({
       "*.svg",
     },
   },
+  gh = {
+    enabled = true,
+  },
   notifier = { enabled = true },
   terminal = { enabled = true },
   gitbrowse = { enabled = true },
@@ -34,6 +37,10 @@ vim.keymap.set("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc
 vim.keymap.set("n", "<leader>fr", function() Snacks.picker.recent() end, { desc = "Recent files" })
 vim.keymap.set("n", "<leader>fs", function() Snacks.picker.lsp_symbols() end, { desc = "LSP symbols" })
 vim.keymap.set("n", "<leader>fe", function() Snacks.picker.explorer() end, { desc = "Explorer" })
+vim.keymap.set("n", "<leader>gi", function() Snacks.picker.gh_issue() end, { desc = "GitHub Issues (open)" })
+vim.keymap.set("n", "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, { desc = "GitHub All Issues" })
+vim.keymap.set("n", "<leader>gp", function() Snacks.picker.gh_pr() end, { desc = "GitHub PRs (open)" })
+vim.keymap.set("n", "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end, { desc = "GitHub All PRs" })
 
 -- Git
 vim.keymap.set("n", "<leader>gb", function() Snacks.git.blame_line() end, { desc = "Git blame line" })

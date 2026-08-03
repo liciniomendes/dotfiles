@@ -32,6 +32,7 @@ vim.pack.add({
 
   -- markdown
   { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
+  { src = "https://github.com/iamcco/markdown-preview.nvim" },
 
   -- REST
   { src = "https://github.com/mistweaverco/kulala.nvim" },
